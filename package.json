@@ -1,16 +1,45 @@
 {
   "name": "create-initly",
-  "version": "0.1.0",
-  "bin": {
-    "create-initly": "bin/index.js"
-  },
+  "version": "1.0.0",
+  "description": "CLI tool untuk install starter kit dari InitLy",
   "type": "module",
+  "bin": {
+    "create-initly": "./bin/index.js"
+  },
+  "files": [
+    "bin",
+    "src"
+  ],
+  "scripts": {
+    "test": "node bin/index.js",
+    "prepublishOnly": "node bin/index.js --version"
+  },
+  "keywords": [
+    "cli",
+    "starter-kit",
+    "boilerplate",
+    "initly",
+    "scaffolding"
+  ],
+  "author": "syaafiudinm",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/syaafiudinm/create-initly.git"
+  },
+  "bugs": {
+    "url": "https://github.com/syaafiudinm/create-initly/issues"
+  },
+  "homepage": "https://initly.dev",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "dependencies": {
-    "axios": "^1.13.2",
-    "chalk": "^5.6.2",
-    "execa": "^9.6.1",
-    "fs-extra": "^11.3.3",
-    "ora": "^9.0.0",
-    "semver": "^7.7.3"
+    "axios": "^1.6.0",
+    "chalk": "^5.3.0",
+    "execa": "^8.0.1",
+    "fs-extra": "^11.2.0",
+    "ora": "^8.0.1",
+    "semver": "^7.5.4"
   }
 }
