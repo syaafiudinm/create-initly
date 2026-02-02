@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE = "https://initly.dev/api/v1";
+const API_BASE = "http://127.0.0.1:8000/api/v1";
 
 export async function getStarterKit(slug) {
   try {
@@ -21,17 +21,14 @@ export async function getStarterKit(slug) {
 
 export async function trackInstall(slug) {
   try {
-    await axios.post(
-      `${API_BASE}/starter-kits/${slug}/track-install`,
-      {}
-    );
+    await axios.post(`${API_BASE}/starter-kits/${slug}/track-install`, {});
   } catch (err) {
     console.debug("track install Failed:", err.message);
   }
 }
 
 export async function listStarterKits(filters = {}) {
-  try{
+  try {
     const params = new URLSearchParams(filters);
     const res = await axios.get(`${API_BASE}/starter-kits?${params}`, {
       timeout: 10000,

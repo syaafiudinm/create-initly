@@ -3,6 +3,7 @@
 **Initly** adalah CLI tool untuk membuat project starter kit modern dengan cepat — tanpa setup ribet.
 
 Cukup satu command, dan kamu langsung dapat:
+
 - struktur project siap pakai
 - dependency ter-install
 - best practice bawaan
@@ -30,6 +31,15 @@ Cukup satu command, dan kamu langsung dapat:
 
 ## ⚡ Instalasi & Penggunaan
 
+#### To Do Starter
+
+1. MERN
+2. React + Go
+3. Vue + Django
+
 ### Menggunakan npx (disarankan)
+
 ```bash
 npx create-initly <starter-kit>
+
+```

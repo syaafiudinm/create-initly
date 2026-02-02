@@ -16,15 +16,14 @@ export async function installStarterKit(starterKit) {
 
   const cloneSpin = ora("Cloning repository...").start();
   try {
-    await execa("git", ["clone", "-b", starterKit.branch, starterKit.repo], {
-      stdio: "ignore",
+    await execa("git", ["clone", "-b", branch, repoUrl, targetDir], {
+      stdio: "pipe",
     });
     cloneSpin.succeed(`Repository cloned to ${repoName}`);
-  } catch {
+  } catch (err) {
     cloneSpin.fail("Failed to clone repository");
-    throw new Error(`Git clone failed: ${err.message}`);
+    throw new Error(`Git clone failed: ${err.stderr || err.message}`);
   }
-  spin.succeed("Repository cloned");
 
   process.chdir(targetDir);
 
@@ -35,7 +34,7 @@ export async function installStarterKit(starterKit) {
     try {
       await execa(installCommand, { shell: true, stdio: "inherit" });
       installSpin.succeed("Dependencies installed");
-    } catch {
+    } catch (err) {
       installSpin.fail(`Failed to run ${installCommand}`);
       throw new Error("Dependencies installation failed");
     }
@@ -50,10 +49,5 @@ export async function installStarterKit(starterKit) {
 
   console.log("\n✅ Starter kit ready!");
   console.log(`\n📂 cd ${repoName}`);
-
-  if (starterKit.version.install_command) {
-    console.log("🚀 Start developing!\n");
-  } else {
-    console.log("📦 Run 'npm install' to install dependencies\n");
-  }
+  console.log("\n🚀 Start developing!");
 }
